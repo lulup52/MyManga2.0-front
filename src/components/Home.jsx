@@ -7,7 +7,7 @@ import './style.scss';
 
 
 const mapStateToProps = (state) => ({
-    user: state
+    user: state.user
   });
 
 const Home = ({user, dispatch}) => {

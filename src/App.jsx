@@ -5,6 +5,7 @@ import Home from "./components/Home"
 import SerieListe from "./components/serieListe"
 import TomeSerieListe from "./components/TomeSerieListe"
 import NavBar from "./components/NavBar"
+import NorifPopUp from "./components/NorifPopUp"
 import CollectionUser from "./components/CollectionUser"
 import './App.css'
 
@@ -15,6 +16,7 @@ function App() {
   return (
     <>
      <Router>
+      <NorifPopUp />
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />

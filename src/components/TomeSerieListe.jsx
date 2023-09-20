@@ -13,10 +13,11 @@ import './style.scss';
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => ({
-  user: state
+  user: state.user,
+  popUpState: state.popUpState
 });
 
-const TomeSerieListe = ({usage, user}) => {
+const TomeSerieListe = ({usage, user, popUpState, dispatch}) => {
   
   const [modaleDisplay, setModalDisplay] = useState(false)
   const [updateAllTOmes, setUpdateAllTOmes] = useState(false)  
@@ -26,8 +27,14 @@ const TomeSerieListe = ({usage, user}) => {
     setUpdateAllTOmes(!updateAllTOmes)
   }
 
-  const removeCollection = () => {
+  let timer = ""
+  const popUpToggler = (mesage) => {
 
+    dispatch({ type: 'TOGGLE_POPUP', toggle : false, popUpMsg : ''})
+    setTimeout(() => {
+      dispatch({ type: 'TOGGLE_POPUP', toggle : true, popUpMsg : mesage})
+    },100)
+    
   }
 
   const defTitle = () => {
@@ -85,13 +92,13 @@ useEffect(() => {
             {usage.includes("collection") 
             ?
             <div className='optionBtnContainer'>
-              <MultyBtn tome={tome} refresList={refresList}/>
+              <MultyBtn tome={tome} refresList={refresList} popUpToggler={popUpToggler}/>
             </div>
             :
               ""
             }
             
-            <TomeCard tome={tome} refresList={refresList}/>
+            <TomeCard tome={tome} refresList={refresList} popUpToggler={popUpToggler}/>
           </div>
         )
       })
@@ -108,7 +115,6 @@ useEffect(() => {
 
     return (
     <div className="serieListe">
-        
         <div>
           {defTitle()}
           <div className='addCOllectionBtn'>

@@ -18,10 +18,10 @@ import Axios from 'axios';
 
 
     const mapStateToProps = (state) => ({
-        user: state
+        user: state.user
     });
     
-    const TomeCard = ({tome, user, refresList}) => {
+    const TomeCard = ({tome, user, refresList, popUpToggler}) => {
         const urlCollections = "http://localhost:5000/api/collection"
 
         const addToLibrary = (tomeId) => {
@@ -41,6 +41,7 @@ import Axios from 'axios';
             .then(function (response) {
                 console.log(response.data);
                 refresList()
+                popUpToggler(`${tome.serie_title} n° ${tome.num_tome} ajouté`)
             })
             .catch(function (error) {
                 console.error(error);

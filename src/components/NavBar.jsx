@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => ({
-  user: state
+  user: state.user,
 });
 
 const NavBar = ({user, dispatch}) => {

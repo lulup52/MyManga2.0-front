@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 // import './style.scss';
 
-export default function MultyBtn({tome, refresList}) {
+export default function MultyBtn({tome, refresList, popUpToggler}) {
     const [buyingStatus, setButingStatus] = useState(tome.buying_status)
     const [readingingStatus, setReadingStatus] = useState(tome.reading_status)
     const urlCollections = `http://localhost:5000/api/collection/${tome.collection_id}`
@@ -62,6 +62,7 @@ export default function MultyBtn({tome, refresList}) {
                 setButingStatus(buying)
             } else {
                 refresList()
+                popUpToggler(`${tome.serie_title} n° ${tome.num_tome} supprimé`)
             }
         })
         .catch(function (error) {
