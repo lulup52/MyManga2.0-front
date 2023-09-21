@@ -53,7 +53,7 @@ import Axios from 'axios';
     return (
     <div className="tomeCard">
 
-        <p>{tome.tome_title}</p>
+        <p>{tome.num_tome} : {tome.tome_title}</p>
         {!tome.user_id ? 
             <button className='adToLibrary' onClick={() => {addToLibrary(tome.tome_id)}}>ajouter</button>
         :

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 import MultyBtn from './structure/MultyBtn'
 import TomeCard from './structure/TomeCard'
+import AddCollectionModale from './structure/AddCollectionModale'
 
 import Axios from 'axios';
 import './style.scss';
@@ -18,7 +19,6 @@ const mapStateToProps = (state) => ({
 });
 
 const TomeSerieListe = ({usage, user, popUpState, dispatch}) => {
-  
   const [modaleDisplay, setModalDisplay] = useState(false)
   const [updateAllTOmes, setUpdateAllTOmes] = useState(false)  
   const [allTomesToShow, setAllTomesToShow] = useState([])
@@ -50,22 +50,24 @@ const TomeSerieListe = ({usage, user, popUpState, dispatch}) => {
       }
     }
   }
+
+ 
   // contruction de l'adresse de la requette et rcupération des variables pour la remplire 
   let userId = user
-  let SerieId = ''
+  let serieId = ''
   let tomeToShowUrl = ''
 
   if (usage.includes("collection")) {
-    SerieId = useParams().serieId;
-    tomeToShowUrl = API_BASE_URL + `api/collection_user/tome_serie/${userId}/${SerieId}`
+    serieId = useParams().serieId;
+    tomeToShowUrl = API_BASE_URL + `api/collection_user/tome_serie/${userId}/${serieId}`
 
   }else if (usage.includes("series")) {
-    SerieId = useParams().id;
-    tomeToShowUrl = API_BASE_URL + `api/mangas/serie/${SerieId}/${userId}`
+    serieId = useParams().id;
+    tomeToShowUrl = API_BASE_URL + `api/mangas/serie/${serieId}/${userId}`
   }
   
   
-
+console
 const toggleModal = () => {
   setModalDisplay(!modaleDisplay)
 }
@@ -129,7 +131,7 @@ useEffect(() => {
         {generateTomeCardList()}
         {usage.includes("collection") ?
             (modaleDisplay ? 
-              "test"
+              <AddCollectionModale toggleModal={toggleModal} serieId={serieId} parentRefesh={refresList}/>
             :
               "patest")
           :

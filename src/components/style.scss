@@ -1,3 +1,9 @@
+button {
+    border: none;
+    outline: none !important;
+
+}
+
 .serieListe {
     background-color: red;
 }
@@ -12,8 +18,90 @@
     background-color: lightblue;
     border: solid 1px black;
 }
+.addCollectionModaleContainner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100dvw;
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .modaleBg {
+        background-color: rgba(0, 0, 0, 0.312);
+        width: 100dvw;
+    height: 100dvh;
+        top: 0;
+        left: 0;
+        position: absolute;
+    }
+    .addCollectionModale {
+        background-color: white;
+        width: 90dvw;
+        height: 90dvh;
+        position: relative;
+        border-radius: 10px;
+        box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
 
+        .addCollectionModaleContent {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            .modaleContentTop {
+                height: 20dvh;
+                h1 {
+                    font-size: 24px;
+                }
+            }
+            .modaleContentBot {
+                display: flex;
+                flex-direction: column;
+                justify-content: start;
+                align-items: center;
+                height: 70dvh;
+                width: 100%;
+                background-color: green;
+                overflow: scroll;
+            }
+        }
+        
+    }
+}
+.modaleCloseBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: solid 1px black;
+    border-radius: 10px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
+}
+.multyBtn {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    button {
+        margin: 0 10px;
+        position: relative;
+        top: 0px;
+        padding: 10px;
+        height: 50px;
+        width: 50px;
+        border-radius: 30px;
+        border: none;
+        box-shadow: 0px 5px black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &:active  {
+            box-shadow: 0px 2px black;
+            top: 3px;
+        }
+    }
 
+}
 .popUpNotifContainner {
     position: fixed;
     top: 10px;
@@ -31,7 +119,7 @@
         padding: 1rem;
         max-width: 200px;
         color: black;
-        border-radius: 25px;
+        border-radius: 10px;
         box-shadow: 0 1px 10px black;
     }
 }

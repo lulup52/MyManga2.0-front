@@ -3,6 +3,17 @@ import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 // import './style.scss';
 
+import closedEye from '../../assets/logo/closedEye.svg'
+import midOpenEye from '../../assets/logo/midOpenEye.svg'
+import openEye from '../../assets/logo/openEye.svg'
+import cartAdded from '../../assets/logo/cartAdded.svg'
+import cartNotAdded from '../../assets/logo/cartNotAdded.svg'
+
+let logos = {
+    eye : [closedEye, midOpenEye, openEye],
+    cart : [cartNotAdded, cartAdded]
+}
+
 export default function MultyBtn({tome, refresList, popUpToggler}) {
     const [buyingStatus, setButingStatus] = useState(tome.buying_status)
     const [readingingStatus, setReadingStatus] = useState(tome.reading_status)
@@ -71,9 +82,8 @@ export default function MultyBtn({tome, refresList, popUpToggler}) {
     }
     return (
     <div className="multyBtn">
-        <p>for collection {tome.collection_id}</p>
-        <button onClick={(e) => updateCollection(e, "buying")}>achat : {buyingStatus}</button>
-        <button onClick={(e) => updateCollection(e, "reading")}>lecture : {readingingStatus}</button>
+        <button onClick={(e) => updateCollection(e, "buying")}><img src={logos.cart[buyingStatus]} alt="Open Eye" /></button>
+        <button onClick={(e) => updateCollection(e, "reading")}><img src={logos.eye[readingingStatus]} alt="Open Eye" /></button>
         <button onClick={(e) => updateCollection(e, "delete")}>supprimer</button>
     </div>
   );
