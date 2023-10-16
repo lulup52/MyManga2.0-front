@@ -17,49 +17,57 @@ import Axios from 'axios';
 
 
 
-    const mapStateToProps = (state) => ({
-        user: state.user
-    });
-    
-    const TomeCard = ({tome, user, refresList, popUpToggler}) => {
-        const urlCollections = "http://localhost:5000/api/collection"
+const mapStateToProps = (state) => ({
+    user: state.user
+});
 
-        const addToLibrary = (tomeId) => {
-            const options = {
-                method: 'POST',
-                url: urlCollections,
-                data: 
-                    {
-                        tome_id: tomeId,
-                        user_id: user,
-                        reading_status: 0,
-                        buying_status: 0
-                    },
-                };
-            Axios
-            .request(options)
-            .then(function (response) {
-                console.log(response.data);
-                refresList()
-                popUpToggler(`${tome.serie_title} n° ${tome.num_tome} ajouté`)
-            })
-            .catch(function (error) {
-                console.error(error);
-            });
-        }
+const TomeCard = ({tome, user, refresList, popUpToggler}) => {
+    const [sumaryVisible, setSumaryVisible] = useState(false)
+    const urlCollections = "http://localhost:5000/api/collection"
+
+    const addToLibrary = (tomeId) => {
+        const options = {
+            method: 'POST',
+            url: urlCollections,
+            data: 
+                {
+                    tome_id: tomeId,
+                    user_id: user,
+                    reading_status: 0,
+                    buying_status: 0
+                },
+            };
+        Axios
+        .request(options)
+        .then(function (response) {
+            console.log(response.data);
+            refresList()
+            popUpToggler(`${tome.serie_title} n° ${tome.num_tome} ajouté`)
+        })
+        .catch(function (error) {
+            console.error(error);
+        });
+    }
 
 
         
     return (
     <div className="tomeCard">
-
         <p>{tome.num_tome} : {tome.tome_title}</p>
         {!tome.user_id ? 
             <button className='adToLibrary' onClick={() => {addToLibrary(tome.tome_id)}}>ajouter</button>
         :
             ""
         } 
-        <img src={tome.tome_src_cover} />
+        <div className='cardImgSumary'>
+            <button className='sumaryToggler' onClick={() => setSumaryVisible(!sumaryVisible)}>i</button>
+            <img src={tome.tome_src_cover} />
+            <div className={`cardSumaryContainer ${sumaryVisible ? "visible" : "" }`}>
+                <span className='tomeCardSumaryBG'></span>
+                <p className='tomeCardSumary'>{tome.tome_sumary}</p>
+            </div>
+        </div>
+        
     </div>
   );
 }

@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import MultyBtn from './structure/MultyBtn'
 import TomeCard from './structure/TomeCard'
 import AddCollectionModale from './structure/AddCollectionModale'
+import AddTomePopup from './structure/AddTomePopup'
 
 import Axios from 'axios';
 import './style.scss';
@@ -118,6 +119,13 @@ useEffect(() => {
     return (
     <div className="serieListe">
         <div>
+          {user === 1 && usage.includes("serie")? 
+            <div className="addTomePopupContainer">
+              <AddTomePopup serieId={serieId} />
+            </div> 
+          : 
+          ""
+          }
           {defTitle()}
           <div className='addCOllectionBtn'>
             {usage.includes("collection") ?

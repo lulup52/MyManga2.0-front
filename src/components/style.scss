@@ -1,7 +1,10 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
 button {
     border: none;
     outline: none !important;
-
 }
 
 .serieListe {
@@ -9,10 +12,57 @@ button {
 }
 
 .tomeCard {
+    position: relative;
     max-width: 300px;
     img{
         max-width: 100%;
     }
+    .sumaryToggler {
+        background-color: lightblue;
+        border: solid 1px black;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1;
+        transform: translateX(50%) translateY(-50%);
+    }
+    
+    
+    .cardImgSumary {
+        position: relative;
+        .cardSumaryContainer {
+            opacity: 0;
+            &.visible {
+                opacity: 1;
+            }
+            .tomeCardSumaryBG {
+                display: block;
+                position: absolute;
+                background-color: black;
+                opacity: 0.8;
+                height: 100%;
+                width: 100%;
+                top: 0;
+                left: 0;
+            }
+            .tomeCardSumary {
+                text-align: left;
+                display: flex;
+                align-items: center;
+                padding: .5rem;
+                text-shadow: 0px 0px 5px black;
+                position: absolute;
+                color: white;
+                height: 100%;
+                top: 0;
+                left: 0;
+                font-size: 16px;
+                font-weight: 700;
+            }
+        }
+        
+    }
+    
 }
 .btnExemple {
     background-color: lightblue;
@@ -121,6 +171,17 @@ button {
         color: black;
         border-radius: 10px;
         box-shadow: 0 1px 10px black;
+    }
+}
+
+.tomeAddFormContainer {
+    form {
+        display: flex;
+        flex-direction: column;
+        input {
+            background-color: black;
+            color: white;
+        }
     }
 }
 

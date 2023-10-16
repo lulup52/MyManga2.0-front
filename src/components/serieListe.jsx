@@ -30,6 +30,7 @@ useEffect(() => {
 
     return (
     <div className="serieListe">
+
         <h1>Toutes les séries</h1>
         {allSeries.map((serie, key) => {
           return (

@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 import './style.scss';
 
-
 const mapStateToProps = (state) => ({
     user: state.user
   });
