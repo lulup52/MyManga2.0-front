@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import '../style.scss';
-import AddCollectionTomeList from "./AddCollectionTomeList"
 
 export default function AddTomePopup({serieId}) {
     const [popUpTome, setpopUpTome] = useState(false)
@@ -37,7 +36,7 @@ export default function AddTomePopup({serieId}) {
 
     const createForm = () => {
         return (
-            <div className='tomeAddFormContainer'>
+            <div className='tomeAddFormContaine popUpr'>
                 <form onSubmit={handleSubmit}>
                     <label>title : </label>
                     <input required type="text" name="title" id="title" onChange={(e) => setTitle(e.target.value)} value={title}/>
@@ -57,7 +56,7 @@ export default function AddTomePopup({serieId}) {
         <button onClick={() => {setpopUpTome(!popUpTome)}}>créer un tome</button>
         {
             popUpTome?
-            createForm()
+                createForm()
             :
                 "fermé"
         }

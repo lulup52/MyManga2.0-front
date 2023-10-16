@@ -11,7 +11,7 @@ const NavBar = ({user, dispatch}) => {
   return (
     <nav>
       <ul>
-        <p>user : {user}</p>
+        <p className='userTest'>user : {user}</p>
         <li>
           <Link to="/">Accueil</Link>
         </li>

@@ -19,6 +19,7 @@ const mapStateToProps = (state) => ({
   popUpState: state.popUpState
 });
 
+
 const TomeSerieListe = ({usage, user, popUpState, dispatch}) => {
   const [modaleDisplay, setModalDisplay] = useState(false)
   const [updateAllTOmes, setUpdateAllTOmes] = useState(false)  
@@ -68,7 +69,6 @@ const TomeSerieListe = ({usage, user, popUpState, dispatch}) => {
   }
   
   
-console
 const toggleModal = () => {
   setModalDisplay(!modaleDisplay)
 }
